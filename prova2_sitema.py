@@ -317,7 +317,7 @@ def menu_vendas():
         print("\n=== MENU VENDAS ===")
         print("1 - Registrar Venda")
         print("2 - Aplicar Cupom")
-        print("3 - Relatóriocde Vendas")
+        print("3 - Relatório de Vendas")
         print("0 - Voltar")
 
         op = input("Escolha: ")

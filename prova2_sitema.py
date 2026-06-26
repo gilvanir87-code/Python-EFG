@@ -53,7 +53,7 @@ vendas = {}
 #FUNÇÕES DE ALUNOS
 #==================================
 
-def cadastra_alunos():
+def cadastrar_alunos():
     nome = input("Nome do Aluno: ")
     alunos.append(nome)
     print("Aluno cadastrado com sucesso!")
@@ -107,7 +107,7 @@ def consultar_boletins():
     if len(boletins) == 0:
         print("Nenhum boletim cadastrado.")
     else:
-        for nome, dados in boletins.itens():
+        for nome, dados in boletins.items():
             print("-"*30)
             print("Aluno:", nome)
             print("Média:", round(dados["media"], 2))
@@ -121,7 +121,7 @@ def cadastrar_produto():
     nome = input("Produto: ")
     qtd = int(input("Quantidade: "))
 
-    estoque[nome] =qtd
+    estoque[nome] = qtd
 
     print("Produto cadastrado!")
 
@@ -148,7 +148,7 @@ def listar_produtos():
         print("Nenhum produto cadastrado.")
     else:
         print("\nESTOQUE")
-        for produto, qtd in estoque.itens():
+        for produto, qtd in estoque.items():
             print(produto, "->", qtd)
 
 #==================================
@@ -237,7 +237,7 @@ def menu_alunos():
         op = input("Escolha: ")
 
         if op == "1":
-            cadastrar_aluno()
+            cadastrar_alunos()
 
         elif op == "2":
             listar_alunos()
@@ -348,7 +348,7 @@ def menu_vendas():
 while True:
 
     print("\n" + "=" * 50)
-    print("SISTEMA INTEGRADO PYTHON")
+    print("=== YNOVE SISTEMA DE GESTÃO ===")
     print("=" * 50)
 
     print("1 - Gestão de Alunos")

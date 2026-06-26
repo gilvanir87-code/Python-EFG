@@ -165,7 +165,7 @@ def registrar_venda():
     print("Venda registrada!")
 
 def aplicar_cupom():
-    if len(venda) == 0:
+    if len(vendas) == 0:
         print("Nenhuma venda cadastrada.")
         return
 

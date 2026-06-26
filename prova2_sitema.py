@@ -6,12 +6,8 @@ aluno = {
     "disciplina": "Python Básico",
 }
 
-print("\n=======================================\n")
-print("============= Cabeçalho Geral =============")
-
-# Acessando os valores do dicionário
-print("aluno:", aluno["nome"])
-print("disciplina:", aluno["disciplina"])
+print("\n==================================================")
+print("===============> CABEÇALHO  GERAL <===============")
 
 # Usando f-strings
 print(f"👤 Aluno(a): {aluno['nome']}")
@@ -22,7 +18,7 @@ print(f"📚 Disciplina: {aluno['disciplina']}")
 data_formatada = datetime.now().strftime("%d/%m/%Y")
 print(f"🗓 Data: {data_formatada}")
 
-print("=============================================================")
+print("==================================================")
 
 #========================================================================
 #SISTEMA INTEGRADO - PROJETO FINAL PYTHON BÁSICO
@@ -47,7 +43,7 @@ import random
 alunos = []
 boletins = {}
 estoque = {}
-vendas = []
+vendas = {}
 
 #==================================
 #FUNÇÕES DE ALUNOS
@@ -162,26 +158,26 @@ def registrar_venda():
     venda = {
         "Cliente": cliente,
         "Valor": valor
-}
+    }
 
     vendas.append(venda)
 
     print("Venda registrada!")
 
 def aplicar_cupom():
-    if len(vendas) == 0:
+    if len(venda) == 0:
         print("Nenhuma venda cadastrada.")
         return
 
     ultima = vendas[-1]
 
-    cupom = random.choice([5, 10, 15, 20])
+    cupom = rendom.choice([5, 10, 15, 20])
 
-    desconto = ultima["Valor"] * (cupom/100)
-    total = ultima["Valor"] - desconto
+    desconto = ultima["valor"] * (cupom/100)
+    total = ultima["valor"] - desconto
 
-    print("\nCLIENTE:", ultima["Cliente"])
-    print("Valor Original:", ultima["Valor"])
+    print("\nCLIENTE:", ultima["cliente"])
+    print("Valor Original:", ultima["valor"])
     print("Cupom sorteado:", cupom, "%")
     print("Valor final:", round(total, 2))
 
@@ -195,8 +191,8 @@ def relatorio_vendas():
     print("\nRELATÓRIO DE VENDAS")
 
     for venda in vendas:
-        print(venda['Cliente'], "-", venda['Valor'])
-        total += venda["Valor"]
+        print(venda["cliente"], "-", venda["valor"])
+        total += venda["valor"]
 
     print("-"*30)
     print("TOTAL VENDIDO: R$", round(total, 2))
@@ -217,7 +213,7 @@ def relatorio_geral():
     total_vendas = 0
 
     for venda in vendas:
-        total_vendas += venda["Valor"]
+        total += venda["valor"]
 
     print("Valor total vendido:", round(total_vendas, 2))
 
@@ -297,13 +293,13 @@ def menu_estoque():
             cadastrar_produto()
 
         elif op == "2":
-            atualizar_estoque()
+            atualizar_produto()
 
         elif op == "3":
             consultar_produto()
 
         elif op == "4":
-            listar_produtos()
+            listar_produto()
 
         elif op == "0":
             break
@@ -321,7 +317,7 @@ def menu_vendas():
         print("\n=== MENU VENDAS ===")
         print("1 - Registrar Venda")
         print("2 - Aplicar Cupom")
-        print("3 - Relatório de Vendas")
+        print("3 - Relatóriocde Vendas")
         print("0 - Voltar")
 
         op = input("Escolha: ")
@@ -348,7 +344,7 @@ def menu_vendas():
 while True:
 
     print("\n" + "=" * 50)
-    print("=== YNOVE SISTEMA DE GESTÃO ===")
+    print("=============> SIPYB SISTEMA GESTOR <=============")
     print("=" * 50)
 
     print("1 - Gestão de Alunos")

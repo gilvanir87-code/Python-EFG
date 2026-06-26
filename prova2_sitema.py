@@ -47,7 +47,7 @@ import random
 alunos = []
 boletins = {}
 estoque = {}
-vendas = {}
+vendas = []
 
 #==================================
 #FUNÇÕES DE ALUNOS
@@ -162,26 +162,26 @@ def registrar_venda():
     venda = {
         "Cliente": cliente,
         "Valor": valor
-    }
+}
 
     vendas.append(venda)
 
     print("Venda registrada!")
 
 def aplicar_cupom():
-    if len(venda) == 0:
+    if len(vendas) == 0:
         print("Nenhuma venda cadastrada.")
         return
 
     ultima = vendas[-1]
 
-    cupom = rendom.choice([5, 10, 15, 20])
+    cupom = random.choice([5, 10, 15, 20])
 
-    desconto = ultima["valor"] * (cupom/100)
-    total = ultima["valor"] - desconto
+    desconto = ultima["Valor"] * (cupom/100)
+    total = ultima["Valor"] - desconto
 
-    print("\nCLIENTE:", ultima["cliente"])
-    print("Valor Original:", ultima["valor"])
+    print("\nCLIENTE:", ultima["Cliente"])
+    print("Valor Original:", ultima["Valor"])
     print("Cupom sorteado:", cupom, "%")
     print("Valor final:", round(total, 2))
 
@@ -195,8 +195,8 @@ def relatorio_vendas():
     print("\nRELATÓRIO DE VENDAS")
 
     for venda in vendas:
-        print(venda["cliente"], "-", venda["valor"])
-        total += venda["valor"]
+        print(venda['Cliente'], "-", venda['Valor'])
+        total += venda["Valor"]
 
     print("-"*30)
     print("TOTAL VENDIDO: R$", round(total, 2))
@@ -217,7 +217,7 @@ def relatorio_geral():
     total_vendas = 0
 
     for venda in vendas:
-        total += venda["valor"]
+        total_vendas += venda["Valor"]
 
     print("Valor total vendido:", round(total_vendas, 2))
 
@@ -297,13 +297,13 @@ def menu_estoque():
             cadastrar_produto()
 
         elif op == "2":
-            atualizar_produto()
+            atualizar_estoque()
 
         elif op == "3":
             consultar_produto()
 
         elif op == "4":
-            listar_produto()
+            listar_produtos()
 
         elif op == "0":
             break
@@ -321,7 +321,7 @@ def menu_vendas():
         print("\n=== MENU VENDAS ===")
         print("1 - Registrar Venda")
         print("2 - Aplicar Cupom")
-        print("3 - Relatóriocde Vendas")
+        print("3 - Relatório de Vendas")
         print("0 - Voltar")
 
         op = input("Escolha: ")

@@ -43,19 +43,19 @@ import random
 alunos = []
 boletins = {}
 estoque = {}
-vendas = {}
+vendas = []
 
 #==================================
 #FUNÇÕES DE ALUNOS
 #==================================
 
-def cadastrar_alunos():
+def cadastrar_aluno():
     nome = input("Nome do Aluno: ")
     alunos.append(nome)
     print("Aluno cadastrado com sucesso!")
 
 def listar_alunos():
-    if len(alunos) ==0:
+    if len(alunos) == 0:
         print("Nenhum aluno cadastrado.")
     else:
         print("\nLISTA DE ALUNOS")
@@ -140,7 +140,7 @@ def consultar_produto():
         print("Produto não encontrado.")
 
 def listar_produtos():
-    if len(estoque) ==0:
+    if len(estoque) == 0:
         print("Nenhum produto cadastrado.")
     else:
         print("\nESTOQUE")
@@ -156,8 +156,8 @@ def registrar_venda():
     valor = float(input("Valor da venda: R$"))
 
     venda = {
-        "Cliente": cliente,
-        "Valor": valor
+        "cliente": cliente,
+        "valor": valor
     }
 
     vendas.append(venda)
@@ -171,9 +171,9 @@ def aplicar_cupom():
 
     ultima = vendas[-1]
 
-    cupom = rendom.choice([5, 10, 15, 20])
+    cupom = random.choice([5, 10, 15, 20])
 
-    desconto = ultima["valor"] * (cupom/100)
+    desconto = ultima["valor"] * (cupom / 100)
     total = ultima["valor"] - desconto
 
     print("\nCLIENTE:", ultima["cliente"])
@@ -213,7 +213,7 @@ def relatorio_geral():
     total_vendas = 0
 
     for venda in vendas:
-        total += venda["valor"]
+        total_vendas += venda["valor"]
 
     print("Valor total vendido:", round(total_vendas, 2))
 
@@ -233,7 +233,7 @@ def menu_alunos():
         op = input("Escolha: ")
 
         if op == "1":
-            cadastrar_alunos()
+            cadastrar_aluno()
 
         elif op == "2":
             listar_alunos()
@@ -293,13 +293,13 @@ def menu_estoque():
             cadastrar_produto()
 
         elif op == "2":
-            atualizar_produto()
+            atualizar_estoque()
 
         elif op == "3":
             consultar_produto()
 
         elif op == "4":
-            listar_produto()
+            listar_produtos()
 
         elif op == "0":
             break
@@ -308,7 +308,7 @@ def menu_estoque():
             print("Opção inválida.")
 
 #==================================
-#MENU ESTOQUE
+#MENU VENDAS
 #==================================
 
 def menu_vendas():
